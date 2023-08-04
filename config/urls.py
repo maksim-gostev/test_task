@@ -19,9 +19,12 @@ from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
 
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('birds.urls')),
+    path('', include('birds.urls', 'birds')),
+    path('', include('birds_seen.urls', 'birds_seen')),
 ]
 
 if settings.DEBUG:

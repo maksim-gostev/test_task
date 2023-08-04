@@ -13,16 +13,7 @@ class BirdListView(View):
 
         CUSTOM_LISTS_TEMPLATE["customcards"]["cardsdata"]=[]
         for bird in birds:
-            if hasattr(bird, "image"):
-                CUSTOM_LISTS_TEMPLATE["customcards"]["cardsdata"].append({
-                    "id": bird.id,
-                    "name": bird.name,
-                    'image': bird.image,
-                })
-            CUSTOM_LISTS_TEMPLATE["customcards"]["cardsdata"].append({
-                "id": bird.id,
-                "name": bird.name,
-            })
+            CUSTOM_LISTS_TEMPLATE["customcards"]["cardsdata"].append(BirdsSerializer(bird).data)
         return JsonResponse(CUSTOM_LISTS_TEMPLATE, safe=False)
 
 class BirdCreateView(generics.CreateAPIView):
