@@ -8,7 +8,7 @@ from django.views.generic import DetailView
 from django.shortcuts import redirect
 from rest_framework import generics
 from birds.models import Birds
-from birds_seen.models import Birds_seen
+from birds_seen.models import BirdsSeen
 from birds_seen.serializers import Birds_seenSerializer
 import global_variable
 
@@ -34,15 +34,15 @@ class SawView(DetailView):
     def post(self, request, *args, **kwargs):
 
         try:
-            birds_seen: QuerySet = Birds_seen.objects.filter(birds=global_variable.BIRDS_SEEN['bird']).first()
-        except Birds_seen.DoesNotExist:
+            birds_seen: QuerySet = BirdsSeen.objects.filter(birds=global_variable.BIRDS_SEEN['bird']).first()
+        except BirdsSeen.DoesNotExist:
             birds_seen = None
 
         if birds_seen is None:
-            obj: Birds_seen = Birds_seen(birds=global_variable.BIRDS_SEEN.get('bird'), updated=global_variable.BIRDS_SEEN.get('updated'))
+            obj: BirdsSeen = BirdsSeen(birds=global_variable.BIRDS_SEEN.get('bird'), updated=global_variable.BIRDS_SEEN.get('updated'))
             obj.save()
         else:
-            obj: Birds_seen = Birds_seen.objects.filter(birds=global_variable.BIRDS_SEEN.get('bird')).first()
+            obj: BirdsSeen = BirdsSeen.objects.filter(birds=global_variable.BIRDS_SEEN.get('bird')).first()
             obj.updated = global_variable.BIRDS_SEEN.get('updated')
             obj.number_vision_acts = obj.number_vision_acts + 1
             obj.save()
@@ -52,7 +52,7 @@ class SawView(DetailView):
         return JsonResponse(Birds_seenSerializer(obj).data)
 
 class Birds_I_saw_View(generics.ListAPIView):
-    model = Birds_seen
-    queryset = Birds_seen.objects.all()
+    model = BirdsSeen
+    queryset = BirdsSeen.objects.all()
     serializer_class = Birds_seenSerializer
 

@@ -1,7 +1,7 @@
 from rest_framework import serializers
 
 from birds.models import Birds
-from birds_seen.models import Birds_seen
+from birds_seen.models import BirdsSeen
 
 class BirdsSawSerializer(serializers.ModelSerializer):
 
@@ -16,6 +16,6 @@ class Birds_seenSerializer(serializers.ModelSerializer):
 
 
     class Meta:
-        model = Birds_seen
+        model = BirdsSeen
         fields = '__all__'
 

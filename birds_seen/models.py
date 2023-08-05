@@ -3,7 +3,7 @@ from django.db import models
 from birds.models import Birds
 
 
-class Birds_seen(models.Model):
+class BirdsSeen(models.Model):
     birds = models.ForeignKey(Birds, on_delete=models.CASCADE, related_name='birds_seen',
                               verbose_name='Увиденные птицы')
     updated = models.DateTimeField(verbose_name='Дата последнего обновления')
