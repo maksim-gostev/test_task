@@ -34,11 +34,12 @@ class SawView(DetailView):
     def post(self, request, *args, **kwargs):
 
         try:
-            birds_seen: Birds_seen = Birds_seen.objects.filter(birds=global_variable.BIRDS_SEEN['bird'])
+            birds_seen: QuerySet = Birds_seen.objects.filter(birds=global_variable.BIRDS_SEEN['bird']).first()
         except Birds_seen.DoesNotExist:
             birds_seen = None
+
         if birds_seen is None:
-            obj = Birds_seen(birds=global_variable.BIRDS_SEEN.get('bird'), updated=global_variable.BIRDS_SEEN.get('updated'))
+            obj: Birds_seen = Birds_seen(birds=global_variable.BIRDS_SEEN.get('bird'), updated=global_variable.BIRDS_SEEN.get('updated'))
             obj.save()
         else:
             obj: Birds_seen = Birds_seen.objects.filter(birds=global_variable.BIRDS_SEEN.get('bird')).first()
