@@ -14,7 +14,7 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Birds_seen',
+            name='BirdsSeen',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('updated', models.DateTimeField(auto_now=True, verbose_name='Дата последнего обновления')),

@@ -11,18 +11,22 @@ python = "^3.10"
 django = "^4.2.4"
 djangorestframework = "^3.14.0"
 pillow = "^10.0.0"
+pytest-django = "^4.5.2"
+pytest-factoryboy = "^2.5.1"
 
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
+
 [tool.pytest.ini_options]
-django_settings_module = "config.settings.dev"
-addopts = "--ds=config.settings.dev --reuse-db"
-python_files = ["tests.py", "test_*.py"]
-django_find_project = false
-pythonpath = "."
+DJANGO_SETTINGS_MODULE = "config.settings"
+python_files = [
+    "test.py",
+    "test_*.py",
+    "*_test.py",
+]
 
 
 [tool.flake8]
@@ -184,3 +188,4 @@ valid-classmethod-first-arg = ['cls']
 valid-metaclass-classmethod-first-arg = ['mcs']
 [tool.pylint.'EXCEPTIONS']
 overgeneral-exceptions = ['Exception']
+
