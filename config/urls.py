@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
+from drf_spectacular.views import SpectacularSwaggerView, SpectacularAPIView
 
 
 
@@ -25,6 +26,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('birds.urls', 'birds')),
     path('', include('birds_seen.urls', 'birds_seen')),
+
+    path('api/shema', SpectacularAPIView.as_view(), name='shema'),
+    path('api/swagger', SpectacularSwaggerView.as_view(url_name='shema'), name='api'),
 ]
 
 if settings.DEBUG:

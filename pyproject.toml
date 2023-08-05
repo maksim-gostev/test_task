@@ -13,6 +13,7 @@ djangorestframework = "^3.14.0"
 pillow = "^10.0.0"
 pytest-django = "^4.5.2"
 pytest-factoryboy = "^2.5.1"
+drf-spectacular = "^0.26.4"
 
 
 [build-system]

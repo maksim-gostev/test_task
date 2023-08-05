@@ -41,6 +41,7 @@ DJANGO_APPS = [
 
 THIRD_PARTY_APPS = [
     'rest_framework',
+    'drf_spectacular',
 ]
 
 LOCAL_APPS = [
@@ -135,3 +136,22 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Птицы API',
+    'DESCRIPTION': 'Тестовое задание для API',
+    'VERSION': '1.0.0',
+    "CONTACT": {
+            "name": "maksim-gostev",
+            "url": "https://github.com/maksim-gostev",
+        },
+    "SWAGGER_UI_SETTINGS": {
+        "deepLinking": True,
+        "persistAuthorization": True,
+        "displayOperationId": True,
+        },
+}
