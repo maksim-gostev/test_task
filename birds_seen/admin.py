@@ -1,3 +1,5 @@
 from django.contrib import admin
 
-# Register your models here.
+from birds_seen.models import BirdsSeen
+
+admin.site.register(BirdsSeen)

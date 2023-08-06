@@ -35,3 +35,4 @@
 
 ## Подготовка к запуску
 >* python manage.py migrate
+>* python manage.py runserver

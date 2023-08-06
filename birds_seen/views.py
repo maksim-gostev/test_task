@@ -18,7 +18,7 @@ class SawView(DetailView):
     model = Birds
 
 
-    def get(self, request, *args, **kwargs):
+    def get(self, request, *args, **kwargs) -> JsonResponse:
         bird: Birds = self.get_object()
 
         global_variable.BIRDS_SEEN = {}
@@ -31,7 +31,7 @@ class SawView(DetailView):
         response = redirect('birds_seen:saw_list')
         return response
 
-    def post(self, request, *args, **kwargs):
+    def post(self, request, *args, **kwargs) -> JsonResponse:
 
         try:
             birds_seen: QuerySet = BirdsSeen.objects.filter(birds=global_variable.BIRDS_SEEN['bird']).first()

@@ -1,3 +1,4 @@
+from django.db.models import QuerySet
 from django.http import JsonResponse
 from django.views import View
 from rest_framework import generics
@@ -8,8 +9,8 @@ from constants import CUSTOM_LISTS_TEMPLATE
 
 
 class BirdListView(View):
-    def get(self, request):
-        birds = Birds.objects.all()
+    def get(self, request) -> JsonResponse:
+        birds: QuerySet= Birds.objects.all()
 
         CUSTOM_LISTS_TEMPLATE["customcards"]["cardsdata"]=[]
         for bird in birds:
