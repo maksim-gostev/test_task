@@ -31,8 +31,12 @@
 >* - Количество актов видения птицы на момент создания записи
 >*  Добавлен сваггер
 >* http://127.0.0.1:8000/api/swagger
+>* Модели добавлены в админ панел
+>* http://127.0.0.1:8000/admin/
 
 
 ## Подготовка к запуску
+>* pip install poetry
+>* poetry install
 >* python manage.py migrate
 >* python manage.py runserver
